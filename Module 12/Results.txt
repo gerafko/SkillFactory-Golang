@@ -1,0 +1,11 @@
+Алгоритм			n=10 ns/op		allocs		n=1000		allocs		n=100000			allocs
+
+bubblesort			320.3 			0			650036		0			13873421200			0
+
+selectionSort		312.5			0			550087		0 			5345513800			1
+
+insertionSort		191.6 			0 			316229		0 			3119601800			0
+
+mergeSort			1667			9 			83113 		999			13111251			99999
+
+quickSort			575.9 			0 			48630		0 			6805006 			0
