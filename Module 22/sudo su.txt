@@ -1,0 +1,40 @@
+sudo su
+
+mkdir var
+cd data
+mkdir data
+cd data
+mkdir invoices web store
+
+groupadd bookkeepers storekeepers developers
+
+useradd -p qwerty -G bookkeepers -s /bin/bash bookkeeper
+useradd -p qwerty -G storekeepers -s /bin/bash storekeeper
+useradd -p qwerty -G developers -s /bin/bash developer
+useradd -p qwerty Admin
+
+touch /invoices/script1.sh
+vi ./invoices/script1.sh
+	#!/bin/bash
+	/bin/echo 'Bookkeepers script done'
+cp ./invoices/script1.sh ./store/script2.sh
+cp ./invoices/script1.sh ./web/script3.sh
+vi ./store/script2.sh
+	#!/bin/bash
+	/bin/echo 'Storekeepers script done'
+vi ./web/script3.sh
+	#!/bin/bash
+	/bin/echo 'Developers script done'
+
+chsh -s /bin/bash bookkeeper
+chsh -s /bin/bash storekeeper
+chsh -s /bin/bash developer
+chsh -s /bin/bash Admin
+
+chgrp bookkeepers ./invoice
+chgrp storekeepers ./store
+chgrp developers ./web
+
+chmod 774 ./invoices
+chmod 774 ./store
+chmod 774 ./web
