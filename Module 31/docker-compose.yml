@@ -1,0 +1,20 @@
+services:
+  anton-go-service:
+    image: anton-go-service:latest
+    container_name: anton-go-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - postgres
+    restart: on-failure
+  postgres:
+    image: "postgres:12"
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+      - POSTGRES_PORT=5432
+    volumes:
+      - "./tmp/postgres-data:/var/lib/postgresql/data"
